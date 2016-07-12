@@ -1,0 +1,11 @@
+{{ define "admin_menu" }}
+<header class="header">
+    <ul class="nav">
+        <li class='{{ if eq .url_path "/admin/" }}active{{ end }}'><a href="/admin/">Welcome Edit</a></li>
+        <li class='{{ if eq .url_path "/admin/profile" }}active{{ end }}'><a href="/admin/profile">Profile Edit</a></li>
+        <li class='{{ if eq .url_path "/admin/resume" }}active{{ end }}'><a href="/admin/resume">Resume Edit</a></li>
+        <li class='{{ if eq .url_path "/admin/portfolio" }}active{{ end }}'><a href="/admin/portfolio">Portfolio Edit</a></li>
+        <!-- <li><a href="#blog">Blog</a></li> -->
+    </ul>
+</header>
+{{ end }}

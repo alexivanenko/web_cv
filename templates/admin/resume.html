@@ -1,0 +1,240 @@
+{{define "extra_scripts"}}
+<script type="text/javascript" src="/static/js/resume.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        attachAddRowsEvents();
+    });
+</script>
+{{ end }}
+
+{{ define "content" }}
+<!-- Start Admin Resume -->
+<section id="resume">
+    <!-- Start inner_section -->
+    <div class="inner_section resume_section">
+        <!-- Index -->
+        <div>
+            <form method="post" class="form-horizontal" name="contact_form" action="">
+                <input type="hidden" name="id" value="{{ .model.ObjectID.Hex }}" />
+
+                <!-- Start Services Edit -->
+                <div class="form-group text-center">
+                    <label>Education</label>
+                </div>
+                <div id="educationRows">
+                    {{ range $index, $item := .model.Educations }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputEducationFrom{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="number" class="form-control education-first" id="inputEducationFrom{{ $index }}" name="Education.From" placeholder="2001" value="{{ $item.From }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEducationTo{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEducationTo{{ $index }}" name="Education.To" placeholder="2016" value="{{ $item.To }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEducationGrade{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEducationGrade{{ $index }}" name="Education.Grade" placeholder="Master Degree" value="{{ $item.Grade }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEducationScience{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEducationScience{{ $index }}" name="Education.Science" placeholder="Computer Science" value="{{ $item.Science }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEducationInstitution{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEducationInstitution{{ $index }}" name="Education.Institution" placeholder="The Harvard Academy" value="{{ $item.Institution }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEducationDescription{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEducationDescription{{ $index }}" name="Education.Description" placeholder="The best education" value="{{ $item.Description }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success education" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Services Edit -->
+
+                <!-- Start Employment Edit -->
+                <div class="form-group text-center">
+                    <label>Employment</label>
+                </div>
+                <div id="employmentRows">
+                    {{ range $index, $item := .model.Employments }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputEmploymentFrom{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="number" class="form-control education-first" id="inputEmploymentFrom{{ $index }}" name="Employment.From" placeholder="2001" value="{{ $item.From }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmploymentTo{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEmploymentTo{{ $index }}" name="Employment.To" placeholder="2016" value="{{ $item.To }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmploymentCompany{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEmploymentCompany{{ $index }}" name="Employment.Company" placeholder="Google" value="{{ $item.Company }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmploymentPosition{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEmploymentPosition{{ $index }}" name="Employment.Position" placeholder="Boss" value="{{ $item.Position }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmploymentDescription{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputEmploymentDescription{{ $index }}" name="Employment.Description" placeholder="The best developer" value="{{ $item.Description }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success employment" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Employment Edit -->
+
+                <!-- Start Skills Edit -->
+                <div class="form-group text-center">
+                    <label>Skills</label>
+                </div>
+                <div id="skillsRows">
+                    {{ range $index, $item := .model.Skills }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputSkillName{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control skills-first" id="inputSkillName{{ $index }}" name="Skill.Name" placeholder="PHP" value="{{ $item.Name }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSkillLevelInPct{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="number" class="form-control" id="inputSkillLevelInPct{{ $index }}" name="Skill.LevelInPct" placeholder="100" value="{{ $item.LevelInPct }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSkillColor{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputSkillColor{{ $index }}" name="Skill.Color" placeholder="red" value="{{ $item.Color }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success skills" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Skills Edit -->
+
+                <!-- Start Facts Edit -->
+                <div class="form-group text-center">
+                    <label>Facts</label>
+                </div>
+                <div id="factsRows">
+                    {{ range $index, $item := .model.Facts }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputFactName{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control facts-first" id="inputFactName{{ $index }}" name="Fact.Name" placeholder="Cup of tea" value="{{ $item.Name }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFactValue{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputFactValue{{ $index }}" name="Fact.Value" placeholder="1000" value="{{ $item.Value }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success facts" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Facts Edit -->
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- // Index -->
+    </div>
+    <!-- End inner_section -->
+</section>
+<!-- End Admin Resume -->
+{{ end }}

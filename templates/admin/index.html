@@ -1,0 +1,63 @@
+{{ define "content" }}
+<!-- Start Admin Index -->
+<section id="welcome">
+    <!-- Start inner_section -->
+    <div class="inner_section welcome_section">
+        <!-- Index -->
+        <div>
+            <form method="post" class="form-horizontal" name="contact_form" action="">
+                <input type="hidden" name="id" value="{{ .model.ObjectID.Hex }}" />
+                <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-5">
+                        <select class="form-control" name="Status" id="inputStatus">
+                            {{ range .statusList }}
+                                <option value="{{ .Name }}" {{ if eq .Name $.model.Status }}selected{{ end }}>{{ .Name }}</option>
+                            {{ end }}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Technologies }}has-error{{ end }}">
+                    <label for="inputTechnologies" class="col-sm-2 control-label">Technologies</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputTechnologies" name="Technologies" placeholder="php, go, html" value="{{ .model.Technologies }}">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Description }}has-error{{ end }}">
+                    <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="inputDescription" rows="3" name="Description" placeholder="Description">{{ .model.Description }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Email }}has-error{{ end }}">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" id="inputEmail" name="Email" placeholder="Email" value="{{ .model.Email }}">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Phone }}has-error{{ end }}">
+                    <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-5">
+                        <input type="tel" class="form-control" id="inputPhone" name="Phone" placeholder="+7-965-981-3761" value="{{ .model.Phone }}">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Languages }}has-error{{ end }}">
+                    <label for="inputLanguages" class="col-sm-2 control-label">Languages</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputLanguages" name="Languages" placeholder="English, French" value="{{ .model.Languages }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- // Index -->
+    </div>
+    <!-- End inner_section -->
+</section>
+<!-- End Admin Index -->
+{{ end }}

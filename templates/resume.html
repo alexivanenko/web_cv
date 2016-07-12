@@ -1,0 +1,120 @@
+{{ define "content" }}
+<!-- Start Resume -->
+<section id="resume">
+    <!-- inner_section - resume_section -->
+    <div class="inner_section resume_section">
+
+        <!-- Skills -->
+        <div class="post_header">
+            <h3>Skills</h3>
+        </div>
+        <!-- // Skills -->
+
+        <!-- Start Skills -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="skills vcard_block">
+                    <div class="skills_inner">
+                        <div class="skillset">
+                            {{ range .resume.Skills }}
+                            <div class="skillbar clearfix " data-percent="{{ .LevelInPct }}%">
+                                <div class="skillbar-title {{ .Color }}"><span>{{ .Name }}</span></div>
+                                <div class="skillbar-bar {{ .Color }} progress-section" data-progress="{{ .LevelInPct }}%"></div>
+                                <div class="skill-bar-percent">{{ .LevelInPct }}%</div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Skills -->
+
+        <!-- EDUCATION -->
+        <div class="post_header">
+            <h3>EDUCATION</h3>
+        </div>
+        <!-- // EDUCATION -->
+
+        <!-- Start EDUCATION -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="education vcard_block">
+                    <ul class="education_inner">
+                        {{ range .resume.Educations }}
+                            <li class="education_item">
+                                <div class="year">
+                                    <h4>{{ .From }}-{{ .To }}</h4>
+                                    <span>{{ .Grade }}</span>
+                                </div>
+                                <div class="box_content">
+                                    <h4>{{ .Institution }} ({{ .Science }})</h4>
+                                    <p>{{ .Description }}</p>
+                                </div>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End EDUCATION -->
+
+        <!-- Employment -->
+        <div class="post_header">
+            <h3>Employment</h3>
+        </div>
+        <!-- // Employment -->
+
+        <!-- Start Employment -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="employment vcard_block">
+                    <ul class="employment_inner">
+                        {{ range .resume.Employments }}
+                        <li class="employment_item">
+                            <div class="year">
+                                <h4>{{ .From }}-{{ .To }}</h4>
+                                <span>{{ .Company }}</span>
+                            </div>
+                            <div class="box_content">
+                                <h4>{{ .Position }}</h4>
+                                <p>{{ .Description }}</p>
+                            </div>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Employment -->
+
+        <!-- Fact -->
+        <div class="post_header">
+            <h3>Facts</h3>
+        </div>
+        <!-- // Fact -->
+
+        <!-- Start Fact -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="fact vcard_block">
+
+                    <div class="fact_content">
+                        {{ range .resume.Facts }}
+                            <div class="fact_box">
+                                <p data-to="{{ .Value }}" data-append="+">{{ .Value }}</p>
+                                <h4>{{ .Name }}</h4>
+                            </div>
+                        {{ end }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Fact -->
+
+    </div>
+    <!-- // inner_section - resume_section -->
+</section>
+<!-- End Resume -->
+{{ end }}

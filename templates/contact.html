@@ -1,0 +1,51 @@
+{{ define "content" }}
+<!-- Start Contact -->
+<section id="contact">
+    <!-- Start inner_section -->
+    <div class="inner_section contact_section">
+        <!-- Contact -->
+        <div class="post_header">
+            <h3>Contact</h3>
+        </div>
+        <!-- // Contact -->
+
+        <!-- Contact -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact vcard_block">
+                    <!-- google_map_container -->
+                    <div class="google_map_container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d46224.80701884229!2d39.6947426!3d43.6054914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40f5d4e111834423%3A0x6e6f61866a5d5df8!2z0KHQvtGH0LgsINCa0YDQsNGB0L3QvtC00LDRgNGB0LrQuNC5INC60YDQsNC5!5e0!3m2!1sru!2sru!4v1468051672347" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <!-- // google_map_container -->
+                    <!-- contact_table_block -->
+                    <div class="contact_table_block">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="font_weight_m">E-mail:</td>
+                                <td class="text_right">
+                                    <a href="mailto:{{ .developer.Email }}" target="_blank" style="text-transform: none;color: #2980b9;">{{ .developer.Email }}</a>
+                                </td>
+                                <td class="font_weight_m">Phone:</td>
+                                <td class="text_right">{{ .developer.Phone }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font_weight_m">Date of birth:</td>
+                                <td class="text_right">{{ .developer.BirthDate|format_date}}</td>
+                                <td class="font_weight_m">Languages:</td>
+                                <td class="text_right">{{ .developer.Languages}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- // contact_table_block -->
+                </div>
+            </div>
+        </div>
+        <!-- Contact -->
+    </div>
+    <!-- End inner_section -->
+</section>
+<!-- End Contact -->
+{{ end }}

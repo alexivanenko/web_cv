@@ -1,0 +1,51 @@
+{{ define "content" }}
+<!-- Start Portfolio -->
+<section id="portfolio">
+    <!-- Inner Section - Portfolio Section -->
+    <div class="inner_section portfolio_section">
+        <!-- Portfolio -->
+        <div class="post_header">
+            <h3>Portfolio</h3>
+        </div>
+        <!-- // Portfolio -->
+        <!-- Portfolio -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portfolio vcard_block">
+
+                    <ul class="button-group filter-button-group">
+                        <li class="btn vcard_btn is-checked" data-filter="*">show all</li>
+                        {{ range .categoriesList }}
+                            <li class="btn vcard_btn" data-filter=".{{ .Name }}">{{ .Name }}</li>
+                        {{ end }}
+                    </ul>
+
+                    <div class="grid">
+                        {{ range .portfolio.Projects }}
+                            <div class="portfolio_item {{ .Category }}" data-category="{{ .Category }}">
+                                <div class="portfolio_img">
+                                    <a class="image_portfolio" href="/static/img/folio/{{ .Image }}" data-lightbox-gallery="gallery1" title="{{ .Description }}">
+                                        <img src="/static/img/folio/{{ .Image }}" alt="" class="img-responsive">
+                                        <div class="overlay">
+                                            <div class="overlay_inner">
+                                                <h4>{{ .Name }}</h4>
+                                                <p>{{ .ShortDescription }}</p>
+                                                {{if ne .Url ""}}
+                                                    <span><a href="{{ .Url }}" target="_blank" class="portfolio_url">{{ .Url }}</a></span>
+                                                {{ end }}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Portfolio -->
+    </div>
+    <!-- Inner Section - Portfolio Section -->
+</section>
+<!-- End Portfolio -->
+{{ end }}

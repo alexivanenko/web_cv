@@ -1,0 +1,99 @@
+{{define "extra_scripts"}}
+<script type="text/javascript" src="/static/js/portfolio.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        attachRemoveEvent();
+        attachEditEvent();
+        attachResetEvent();
+    });
+</script>
+{{ end }}
+
+{{ define "content" }}
+<!-- Start Admin Portfolio -->
+<section id="portfolio">
+    <!-- Start inner_section -->
+    <div class="inner_section portfolio_section">
+        <!-- Index -->
+        <div>
+            <form method="post" enctype="multipart/form-data" class="form-horizontal" name="contact_form" id="projectForm" action="">
+                <input type="hidden" name="id" value="{{ .model.ObjectID.Hex }}" />
+                <input type="hidden" name="projectId" value="" />
+                <input type="hidden" name="projectImage" value="" />
+                <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Category</label>
+                    <div class="col-sm-5">
+                        <select class="form-control" name="Category" id="inputStatus">
+                            {{ range .categoriesList }}
+                                <option value="{{ .Name }}">{{ .Name }}</option>
+                            {{ end }}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Name }}has-error{{ end }}">
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputName" name="Name" placeholder="Google" value="">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Url }}has-error{{ end }}">
+                    <label for="inputUrl" class="col-sm-2 control-label">Url</label>
+                    <div class="col-sm-8">
+                        <input type="url" class="form-control" id="inputUrl" name="Url" placeholder="http://www.google.com" value="">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.ShortDescription }}has-error{{ end }}">
+                    <label for="inputShortDescription" class="col-sm-2 control-label">Short Description</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputShortDescription" name="ShortDescription" placeholder="Search Engine" value="">
+                    </div>
+                </div>
+                <div class="form-group {{ if .errors.Description }}has-error{{ end }}">
+                    <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="inputDescription" rows="3" name="Description" placeholder="Build main platform"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputOrder" class="col-sm-2 control-label">Order</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputOrder" name="Order" placeholder="1" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputImage" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-8">
+                        <input type="file" id="inputImage" name="Image" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="submit" class="btn btn-default" id="uploadButton">Save</button>
+                        &nbsp;&nbsp;<button type="reset" class="btn btn-default" id="resetButton">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="grid">
+            {{ range .model.Projects }}
+                <div class="portfolio_item" id="item_{{ .ObjectID.Hex }}">
+                    <div class="portfolio_img">
+                        <a class="image_portfolio" href="#">
+                            <img src="/static/img/folio/{{ .Image }}" alt="" class="img-responsive">
+                            <div class="overlay">
+                                <div class="overlay_inner">
+                                    <button type="button" class="close" aria-label="Close" id="{{ .ObjectID.Hex }}"><span aria-hidden="true">&times;</span></button>
+                                    <h4>{{ .Name }}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+        <!-- // Index -->
+    </div>
+    <!-- End inner_section -->
+</section>
+<!-- End Admin Portfolio -->
+{{ end }}

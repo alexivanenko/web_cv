@@ -1,0 +1,27 @@
+{{ define "left_side_info" }}
+<div class="section_out_side col-md-4">
+    <div class="row">
+        <!-- Out Side -->
+        <section class="out_side">
+            <div class="img-section" data-bg-img="/static/img/bg-pro.jpg">
+                <div class="inner_out_side">
+                    <!-- Start profile_date -->
+                    <div class="profile_date">
+                        <div class="profile_img">
+                            <img src="/static/img/picc.jpg" alt="" class="hz_image">
+                        </div>
+
+                        <div class="name_and_job">
+                            <h3 class="hz_name"><span>{{ .author }}</span></h3>
+                            <div class="hz_job"><span>Web Developer</span></div>
+                            <span class="hz_freelance"><em>{{ .status }}</em></span>
+                        </div>
+                    </div>
+                    <!-- End profile_date -->
+                </div>
+            </div>
+        </section>
+        <!-- // Out Side -->
+    </div>
+</div>
+{{ end }}

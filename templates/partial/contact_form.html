@@ -1,0 +1,33 @@
+{{ define "contact_form" }}
+<!-- Contact Form -->
+<div class="contact_form">
+
+    <form method="post" class="contact-form" name="contact_form" action="contact_form.php">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form_input">
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="name" class="name" placeholder="Your Name">
+                </div>
+                <div class="form_input">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" name="mail" class="mail" placeholder="Email">
+                </div>
+                <div class="form_input">
+                    <i class="fa fa-home"></i>
+                    <input type="url" name="url" class="url" placeholder="URL">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form_input">
+                    <i class="fa fa-comment"></i>
+                    <textarea placeholder="Message" name="message" class="message"></textarea>
+                </div>
+                <input type="submit" class="button_contact vcard_btn" name="submit" id="submit" value="Send Message">
+            </div>
+        </div>
+    </form>
+
+</div>
+<!-- // Contact Form -->
+{{ end }}

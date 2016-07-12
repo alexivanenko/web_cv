@@ -1,0 +1,165 @@
+{{ define "content" }}
+<!-- Start Profile -->
+<section id="profile">
+    <!-- Inner Section - Profile Section -->
+    <div class="inner_section profile_section">
+        <!-- Start About Desc -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="vcard_block about_desc">
+                    <p>{{ .profile.Description }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- End About Desc -->
+
+        <!-- post_header -->
+        <div class="post_header">
+            <h3>SERVICES</h3>
+        </div>
+        <!-- // post_header -->
+
+        <!-- Inner SERVICES -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="services_blocks">
+                    <!-- Start icon_servi -->
+                    <div class="vcard_block icon_servi">
+                        <ul>
+                            {{ range $index, $item := .profile.Services }}
+                                <li class="icon_servi_{{if mod $index 2}}right{{ else }}left{{ end }}">
+                                    <i class="fa fa-{{ $item.Icon }}"></i>
+                                    <h3>{{ $item.Name }}</h3>
+                                    <p>{{ $item.Description }}</p>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <!-- End icon_service -->
+                </div>
+            </div>
+        </div>
+        <!-- // Inner SERVICES -->
+
+        <!-- Post Header -->
+        <div class="post_header">
+            <h3>Testimonials</h3>
+        </div>
+        <!-- // Post Header -->
+
+        <!-- Testimonials Blocks -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="testimonials vcard_block">
+                    <div id="testimonials_slider">
+                        {{ range .profile.Testimonials }}
+                            <!-- testimonials item -->
+                            <div class="item">
+                                <div class="testimonials_inner">
+                                    <!-- <div class="testimonials_photo">
+                                        <img src="/static/img/pic_t.jpg" alt="Testimonial">
+                                    </div> -->
+                                    <div class="testimonials_text">"{{ .Content }}"</div>
+                                    <div class="shape"></div>
+                                    <div class="testimonials_name">
+                                        <span class="testimonials_textbold">{{if ne .WriterName "" }}{{ .WriterName }}</span>, {{end}}{{ .WriterCompany }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // testimonials item -->
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Testimonials Blocks -->
+
+        <!-- Post Header -->
+        <div class="post_header">
+            <h3>clients</h3>
+        </div>
+        <!-- // Post Header -->
+
+        <!-- Client Blocks -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Inner Section -->
+                <div class="client_blocks">
+                    <!-- Start Client -->
+                    <div class="client_block">
+                        <div class="row">
+
+                            <div class="col-xs-4 col-sm-4 col-md-2">
+                                <!-- client -->
+                                <div class="client">
+                                    <a href="https://www.1crm.com/" target="_blank">
+                                        <img src="/static/img/clients/1crm.png" alt="client">
+                                    </a>
+                                </div>
+                                <!-- client -->
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-2">
+                                <!-- client -->
+                                <div class="client">
+                                    <a href="https://www.linkedin.com/company/dvs-soft-ltd." target="_blank">
+                                        <img src="/static/img/clients/dvs.png" alt="client">
+                                    </a>
+                                </div>
+                                <!-- client -->
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-2">
+                                <!-- client -->
+                                <div class="client">
+                                    <a href="http://payrollontheweb.com/" target="_blank">
+                                        <img src="/static/img/clients/peo.png" alt="client">
+                                    </a>
+                                </div>
+                                <!-- client -->
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-2">
+                                <!-- client -->
+                                <div class="client">
+                                    <a href="https://twitter.com/q5gaming" target="_blank">
+                                        <img src="/static/img/clients/q5.jpg" alt="client">
+                                    </a>
+                                </div>
+                                <!-- client -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Client -->
+                </div>
+                <!-- // Inner Section -->
+            </div>
+        </div>
+        <!-- // Client Blocks -->
+
+        <!-- Post Header -->
+        <!--
+        <div class="post_header">
+            <h3>Interview Videos</h3>
+        </div>
+        -->
+        <!-- // Post Header -->
+
+        <!-- Interview Videos -->
+        <!--
+        <div class="row">
+            <div class="col-md-12">
+                <div class="interview_videos">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/70301553"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <!-- // Interview Videos -->
+    </div>
+</section>
+<!-- End Profile -->
+{{ end }}

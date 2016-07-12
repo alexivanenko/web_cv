@@ -1,0 +1,21 @@
+{{ define "menu" }}
+<header class="header">
+    <ul class="nav">
+        <li class='{{ if or (eq .url_path "/") (eq .url_path "/admin/") }}active{{ end }}'><a href="/">Welcome</a></li>
+        <li class='{{ if eq .url_path "/profile" }}active{{ end }}'><a href="/profile">Profile</a></li>
+        <li class='{{ if eq .url_path "/resume" }}active{{ end }}'><a href="/resume">Resume</a></li>
+        <li class='{{ if eq .url_path "/portfolio" }}active{{ end }}'><a href="/portfolio">Portfolio</a></li>
+        <!-- <li><a href="#blog">Blog</a></li> -->
+        <li class='{{ if eq .url_path "/contact" }}active{{ end }}'><a href="/contact">Contact</a></li>
+    </ul>
+
+    <ul class="nav_icon">
+        <li><a href="#welcome"><i class="fa fa-home"></i></a></li>
+        <li><a href="#profile"><i class="fa fa-user"></i></a></li>
+        <li><a href="#resume"><i class="fa fa-file-text"></i></a></li>
+        <li><a href="#portfolio"><i class="fa fa-briefcase"></i></a></li>
+        <!-- <li><a href="#blog"><i class="fa fa-comment"></i></a></li> -->
+        <li><a href="#contact"><i class="fa fa-envelope"></i></a></li>
+    </ul>
+</header>
+{{ end }}

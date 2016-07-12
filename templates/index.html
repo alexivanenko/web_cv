@@ -1,0 +1,77 @@
+{{ define "content" }}
+<!-- Start Welcome -->
+<section id="welcome" class="active main">
+    <!-- Inner Section - Welcome Section -->
+    <div class="inner_section welcome_section">
+        <!--  Message -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="vcard_block message">
+                    <blockquote>
+                        <strong>Hello, I’m Web Developer /
+                              <span class="rotate_words">
+                                {{ range $index, $item := .developer.TechnologiesList }}
+                                    <span class="rotate-out {{if eq $index 0}}active{{ end }}"> {{ $item }} </span>
+                                {{ end }}
+                              </span>
+                        </strong><br>
+                        <p style="text-transform: none;">{{ .developer.Description }}</p>
+                        <p class="cite"><a href="#"><img src="/static/img/SIG.png" alt=""></a></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <!-- // Message -->
+
+        <!-- Contact Social -->
+        <div class="contact_social">
+            <!-- hire_download -->
+            <div class="hz_contact">
+                <a href="mailto:{{ .developer.Email }}?subject=Job%20Offer&body=Hello,%20Alexander!" target="_blank"><span class="btn vcard_btn"><i class="fa fa-paper-plane"></i> hire Me</span></a>
+                <a href="/cv_pdf" target="_blank"><span class="btn vcard_btn"><i class="fa fa-cloud-download"></i> download</span></a>
+            </div>
+            <!-- // hire_download -->
+
+            <!-- Start social_icon -->
+            <div class="social_icon">
+                <span><a href="https://www.facebook.com/alexivanenko" target="_blank"><i class="fa fa-facebook"></i></a></span>
+                <span><a href="https://www.linkedin.com/in/alexander-ivanenko-b7a34464" target="_blank"><i class="fa fa-linkedin"></i></a></span>
+                <span><a href="https://vk.com/aivanenko" target="_blank"><i class="fa fa-vk"></i></a></span>
+                <span><a href="http://www.upwork.com/o/profiles/users/_~01425441d93741f46d/" target="_blank"><i class="fa fa-underline"></i></a></span>
+                <span><a href="https://plus.google.com/u/0/102930345993667088250/posts" target="_blank"><i class="fa fa-google-plus"></i></a></span>
+            </div>
+            <!-- End social_icon -->
+        </div>
+        <!-- // Contact Social -->
+
+        <!-- Contact Table Block -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="vcard_block contact_table_block">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="font_weight_m">E-mail:</td>
+                            <td class="text_right">
+                                <a href="mailto:{{ .developer.Email }}" target="_blank" style="text-transform: none;color: #2980b9;">{{ .developer.Email }}</a>
+                            </td>
+                            <td class="font_weight_m">Phone:</td>
+                            <td class="text_right">{{ .developer.Phone }}</td>
+                        </tr>
+                        <tr>
+                            <td class="font_weight_m">Date of birth:</td>
+                            <td class="text_right">{{ .developer.BirthDate|format_date}}</td>
+                            <td class="font_weight_m">Languages:</td>
+                            <td class="text_right">{{ .developer.Languages}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- // Contact Table Block -->
+    </div>
+    <!-- // Inner Section -->
+</section>
+<!-- End Welcome -->
+{{ end }}

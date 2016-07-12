@@ -1,0 +1,130 @@
+{{define "extra_scripts"}}
+<script type="text/javascript" src="/static/js/profile.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        attachAddRowsEvents();
+    });
+</script>
+{{ end }}
+
+{{ define "content" }}
+<!-- Start Admin Profile -->
+<section id="profile">
+    <!-- Start inner_section -->
+    <div class="inner_section profile_section">
+        <!-- Index -->
+        <div>
+            <form method="post" class="form-horizontal" name="contact_form" action="">
+                <input type="hidden" name="id" value="{{ .model.ObjectID.Hex }}" />
+                <div class="form-group {{ if .errors.Description }}has-error{{ end }}">
+                    <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="inputDescription" rows="3" name="Description" placeholder="Description">{{ .model.Description }}</textarea>
+                    </div>
+                </div>
+
+                <!-- Start Services Edit -->
+                <div class="form-group text-center">
+                    <label>Services</label>
+                </div>
+                <div id="servicesRows">
+                    {{ range $index, $item := .model.Services }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputServiceName{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control service-name" id="inputServiceName{{ $index }}" name="Service.Name" placeholder="SERVICE" value="{{ $item.Name }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputServiceDescription{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputServiceDescription{{ $index }}" name="Service.Description" placeholder="Description" value="{{ $item.Description }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputServiceIcon{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputServiceIcon{{ $index }}" name="Service.Icon" placeholder="Icon Class" value="{{ $item.Icon }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success service" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Services Edit -->
+
+                <!-- Start Testimonials Edit -->
+                <div class="form-group text-center">
+                    <label>Testimonials</label>
+                </div>
+                <div id="testimonialsRows">
+                    {{ range $index, $item := .model.Testimonials }}
+                        <div class="form-inline text-center">
+                            <div class="form-group">
+                                <label for="inputTestimonialContent{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control testimonial-name" id="inputTestimonialContent{{ $index }}" name="Testimonial.Content" placeholder="Good Job!" value="{{ $item.Content }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTestimonialWriterName{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputTestimonialWriterName{{ $index }}" name="Testimonial.WriterName" placeholder="Sergey Brin" value="{{ $item.WriterName }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTestimonialWriterCompany{{ $index }}"></label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control service-name" id="inputTestimonialWriterCompany{{ $index }}" name="Testimonial.WriterCompany" placeholder="Google" value="{{ $item.WriterCompany }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-5">
+                                    <a class="btn icon-btn btn-danger" href="#" onclick="removeRow(this); return false;">
+                                        <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <a class="btn icon-btn btn-success testimonial" href="#" onclick="return false;">
+                            <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+                <!-- End Testimonials Edit -->
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- // Index -->
+    </div>
+    <!-- End inner_section -->
+</section>
+<!-- End Admin Profile -->
+{{ end }}
