@@ -59,15 +59,16 @@ func (developer *Developer) GetStatus(login string) string {
 	b := db.C(developer.getCollectionName())
 
 	var result []struct {
-		Status string `bson:"status"`
+		Status string `json:"status" bson:"status"`
 	}
-	err := b.Find(bson.M{"login": "alexivanenko"}).Select(bson.M{"status": 1}).All(&result)
+	err := b.Find(bson.M{"login": login}).Select(bson.M{"status": 1}).All(&result)
 
 	if err != nil {
 		config.Log(fmt.Sprintf("Load developer error"))
+		return ""
+	} else {
+		return result[0].Status
 	}
-
-	return result[0].Status
 }
 
 func (developer *Developer) Bind(c *gin.Context, params map[string]string) {

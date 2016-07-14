@@ -6,9 +6,7 @@ import (
 	"os"
 	"time"
 
-	"path"
-	"runtime"
-	"strings"
+	"path/filepath"
 
 	"github.com/go-ini/ini"
 )
@@ -45,13 +43,18 @@ func GetVersion() string {
 
 func GetRootDir() string {
 	if rootDir == "" {
-		_, filename, _, ok := runtime.Caller(0)
+		/*_, filename, _, ok := runtime.Caller(0)
 		if !ok {
 			panic("No caller information")
 		}
 
 		rootDir = path.Dir(filename)
-		rootDir = strings.Replace(rootDir, "/config", "", 1)
+		rootDir = strings.Replace(rootDir, "/config", "", 1)*/
+
+		var err error
+		if rootDir, err = filepath.Abs(fmt.Sprintf("%s/", filepath.Dir(os.Args[0]))); err != nil {
+			panic(err)
+		}
 	}
 
 	return rootDir
