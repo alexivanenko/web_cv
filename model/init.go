@@ -19,7 +19,8 @@ func init() {
 		Password: config.String("db.pass"),
 	}
 
-	session, err := mgo.DialWithInfo(info)
+	var err error
+	session, err = mgo.DialWithInfo(info)
 	if err != nil {
 		panic(err)
 	}
